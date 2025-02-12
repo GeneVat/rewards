@@ -1,0 +1,331 @@
+.app-container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 1200px;
+  margin: 20px auto;
+}
+
+h1 {
+  margin-bottom: 30px;
+  font-size: 2.5em;
+  text-align: center;
+  color: #2c3e50;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.date-input {
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 18px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+  text-align: center;
+  color: #555;
+}
+
+.date-input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.age-input {
+  padding: 15px;
+  margin-bottom: 30px;
+  border: 2px solid #bdc3c7;
+  border-radius: 10px;
+  font-size: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  text-align: center;
+  color: #34495e;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.age-input:focus {
+  border-color: #3498db;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(52, 152, 219, 0.3);
+}
+
+.home-state-input {
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 18px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+  text-align: center;
+  color: #555;
+}
+
+.home-state-input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.toggle-button {
+  padding: 15px 30px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  margin-bottom: 30px;
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-button:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.category-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #ecf0f1;
+  padding-bottom: 15px;
+}
+
+.category-header h2 {
+  margin: 0 0 15px 0;
+  font-size: 1.8em;
+  text-align: center;
+  color: #34495e;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.category-header button {
+  padding: 10px 20px;
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.category-header button:hover {
+  background-color: #219653;
+  transform: scale(1.05);
+}
+
+.map {
+  font-family: 'Courier New', monospace;
+  font-size: 16px;
+  white-space: pre-wrap;
+  margin: 0;
+  text-align: center;
+  overflow-x: auto;
+  color: #555;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.state {
+  display: inline-block;
+  width: 35px; /* Set cell width to 35px */
+  height: 35px; /* Set cell height to 35px */
+  text-align: center;
+  line-height: 35px; /* Center the text vertically */
+  transition: background-color 0.3s, color 0.3s;
+  color: #6c7a89;
+  border-radius: 6px;
+  background-color: #d0e0ef; /* Light blue for default state */
+  box-sizing: border-box;
+  font-size: 14px; /* Adjust text size to fit within 35px cells */
+}
+
+.state:hover {
+  background-color: #c0d0df;
+  color: #34495e;
+}
+
+.state.home {
+  background-color: #d0e0ef; /* Keep the default light blue */
+}
+
+.state.highlight {
+  background-color: #f1c40f;
+  color: #2c3e50;
+  font-weight: bold;
+}
+
+.state.home-highlight {
+  background-color: #87CEEB; /* Sky blue for home state when highlighted */
+  color: #2c3e50;
+  font-weight: bold;
+}
+
+.highlight {
+  background-color: #f1c40f;
+  color: #2c3e50;
+  font-weight: bold;
+}
+
+.autocomplete-container {
+  position: relative;
+  width: 100%;
+}
+
+.autocomplete-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.autocomplete-list li {
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-align: left;
+}
+
+.autocomplete-list li:hover {
+  background-color: #f0f0f0;
+}
+
+.category-container {
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s;
+  width: 100%; /* Scale to the width of the display */
+  box-sizing: border-box;
+}
+
+.category-container:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.map-grid {
+  font-size: 14px;
+  line-height: 1.4;
+  background-color: #ecf0f1;
+  padding: 20px;
+  border-radius: 10px;
+  display: grid; /* Use CSS Grid */
+  gap: 10px; /* Add gap between grid items */
+  text-align: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  width: 100%; /* Scale to the width of the display */
+  box-sizing: border-box;
+  grid-template-columns: repeat(auto-fit, minmax(35px, 1fr)); /* Scale columns */
+  grid-template-rows: repeat(auto-fit, minmax(35px, 1fr)); /* Scale rows */
+}
+
+.map-row {
+  display: contents; /* Use contents to allow grid items to span rows */
+}
+
+/* Media query for smaller screens */
+@media (max-width: 600px) {
+  .app-container {
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  .date-input,
+  .age-input,
+  .toggle-button {
+    font-size: 18px;
+    padding: 10px;
+  }
+
+  .toggle-button {
+    width: 100%;
+  }
+
+  .category-header h2 {
+    font-size: 1.5em;
+  }
+
+  .input-group {
+    margin-bottom: 15px;
+  }
+
+  .age-input, .home-state-input {
+    font-size: 16px;
+    padding: 8px;
+  }
+
+  .autocomplete-list li {
+    padding: 8px;
+  }
+
+  .state {
+    width: 35px; /* Ensure cell width is 35px */
+    height: 35px; /* Ensure cell height is 35px */
+    line-height: 35px; /* Center the text vertically */
+    font-size: 14px; /* Adjust text size to fit within 35px cells */
+  }
+
+  .map-grid {
+    padding: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(35px, 1fr)); /* Adjust columns for smaller screens */
+    grid-template-rows: repeat(auto-fit, minmax(35px, 1fr)); /* Adjust rows for smaller screens */
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1200px) {
+  .map-grid {
+    grid-template-columns: repeat(auto-fit, minmax(35px, 1fr)); /* Adjust columns for medium screens */
+    grid-template-rows: repeat(auto-fit, minmax(35px, 1fr)); /* Adjust rows for medium screens */
+  }
+}
+
+@media (min-width: 1201px) {
+  .map-grid {
+    grid-template-columns: repeat(auto-fit, minmax(35px, 1fr)); /* Adjust columns for larger screens */
+    grid-template-rows: repeat(auto-fit, minmax(35px, 1fr)); /* Adjust rows for larger screens */
+  }
+}
+
+/* Add CSS Grid for larger screens */
+@media (min-width: 768px) {
+  .app-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.flag-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
