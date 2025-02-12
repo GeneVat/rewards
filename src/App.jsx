@@ -163,7 +163,10 @@ const App = () => {
   }, []);
 
   const handleChange = (event) => {
-    setInputValue(event.target.value);
+    const value = event.target.value;
+    if (value === '' || (Number(value) >= 0 && Number(value) <= 99)) {
+      setInputValue(value);
+    }
   };
 
   const handleHomeStateChange = (event) => {
@@ -184,8 +187,8 @@ const App = () => {
     setSuggestions([]);
   };
 
-  const toggleLanguage = () => {
-    setLanguage(prevLanguage => (prevLanguage === 'en' ? 'fr' : 'en'));
+  const handleLanguageChange = (event) => {
+    setLanguage(event.target.value);
   };
 
   const labels = {
@@ -193,7 +196,6 @@ const App = () => {
       title: 'Unlocked States/Provinces',
       ageInput: 'Enter your age',
       homeStateInput: 'Enter your home state/province',
-      toggleLanguage: 'Switch to French',
       categories: {
         learners: "Learner’s Permit",
         license: "Regular License",
@@ -210,7 +212,6 @@ const App = () => {
       title: 'États/Provinces Déverrouillés',
       ageInput: 'Entrez votre âge',
       homeStateInput: 'Entrez votre état/province d\'origine',
-      toggleLanguage: 'Passer à l\'anglais',
       categories: {
         learners: "Permis d'apprenti",
         license: "Permis régulier",
@@ -222,11 +223,40 @@ const App = () => {
         tattoo: "Se faire tatouer",
         adultCharge: "Âge pour être jugé comme adulte"
       }
+    },
+    es: {
+      title: 'Estados/Provincias Desbloqueados',
+      ageInput: 'Ingrese su edad',
+      homeStateInput: 'Ingrese su estado/provincia de origen',
+      categories: {
+        learners: "Permiso de Aprendiz",
+        license: "Licencia Regular",
+        dropout: "Edad Mínima de Abandono Escolar",
+        marriage: "Edad para Casarse",
+        consent: "Edad de Consentimiento",
+        gambling: "Edad para Apostar",
+        drinkingAlcohol: "Consumo de Alcohol",
+        tattoo: "Hacerse un Tatuaje",
+        adultCharge: "Edad para Ser Juzgado como Adulto"
+      }
     }
   };
 
   return (
     <div className="app-container dark-mode">
+      <div className="language-dropdown">
+        <select value={language} onChange={handleLanguageChange}>
+          <option value="en">
+            <span role="img" aria-label="USA">🇺🇸🇨🇦</span> English
+          </option>
+          <option value="fr">
+            <span role="img" aria-label="Quebec">🇫🇷🇨🇦</span> Français
+          </option>
+          <option value="es">
+            <span role="img" aria-label="Mexico">🇪🇸🇲🇽</span> Español
+          </option>
+        </select>
+      </div>
       <h1>{labels[language].title}</h1>
 
       <div className="input-group">
@@ -237,6 +267,8 @@ const App = () => {
           onChange={handleChange}
           className="age-input"
           value={inputValue}
+          min="0"
+          max="99"
         />
       </div>
       <div className="input-group autocomplete-container">
@@ -261,9 +293,6 @@ const App = () => {
           </ul>
         )}
       </div>
-      <button className="toggle-button" onClick={toggleLanguage}>
-        {language === 'en' ? 'Français' : 'English'}
-      </button>
       <div className="category-container">
         <CategoryMap
           title={labels[language].categories.learners}
