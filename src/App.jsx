@@ -55,6 +55,19 @@ const states = [
   { name: 'West Virginia', learners: 15, license: 16, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 },
   { name: 'Wisconsin', learners: 15, license: 18, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 17, drinkingAlcohol: 21, tattoo: 18 },
   { name: 'Wyoming', learners: 15, license: 18, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 },
+  { name: 'Yukon', learners: 15, license: 16, dropout: 16, marriage: 18, consent: 16, gambling: 19, adultCharge: 18, drinkingAlcohol: 19, tattoo: 18 },
+  { name: 'Northwest Territories', learners: 15, license: 16, dropout: 16, marriage: 18, consent: 16, gambling: 19, adultCharge: 18, drinkingAlcohol: 19, tattoo: 18 },
+  { name: 'Nunavut', learners: 15, license: 16, dropout: 16, marriage: 18, consent: 16, gambling: 19, adultCharge: 18, drinkingAlcohol: 19, tattoo: 18 },
+  { name: 'British Columbia', learners: 16, license: 18, dropout: 16, marriage: 18, consent: 16, gambling: 19, adultCharge: 18, drinkingAlcohol: 19, tattoo: 18 },
+  { name: 'Alberta', learners: 14, license: 16, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 18, tattoo: 18 },
+  { name: 'Saskatchewan', learners: 15, license: 16, dropout: 16, marriage: 18, consent: 16, gambling: 19, adultCharge: 18, drinkingAlcohol: 19, tattoo: 18 },
+  { name: 'Manitoba', learners: 15, license: 16, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 18, tattoo: 18 },
+  { name: 'Ontario', learners: 16, license: 18, dropout: 18, marriage: 18, consent: 16, gambling: 19, adultCharge: 18, drinkingAlcohol: 19, tattoo: 18 },
+  { name: 'Quebec', learners: 16, license: 18, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 18, tattoo: 18 },
+  { name: 'New Brunswick', learners: 16, license: 18, dropout: 16, marriage: 18, consent: 16, gambling: 19, adultCharge: 18, drinkingAlcohol: 19, tattoo: 18 },
+  { name: 'Nova Scotia', learners: 16, license: 18, dropout: 16, marriage: 18, consent: 16, gambling: 19, adultCharge: 18, drinkingAlcohol: 19, tattoo: 18 },
+  { name: 'Prince Edward Island', learners: 16, license: 18, dropout: 16, marriage: 18, consent: 16, gambling: 19, adultCharge: 18, drinkingAlcohol: 19, tattoo: 18 },
+  { name: 'Newfoundland and Labrador', learners: 16, license: 18, dropout: 16, marriage: 18, consent: 16, gambling: 19, adultCharge: 18, drinkingAlcohol: 19, tattoo: 18 },
 ];
 
 const stateAbbreviations = {
