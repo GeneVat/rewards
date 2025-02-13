@@ -1,74 +1,74 @@
 import React, { useState, useEffect } from 'react';
 import './App.css'; // Import the CSS file
 
-const states = [
-  { name: 'Alabama', learners: 15, license: 16, dropout: 17, marriage: 18, consent: 16, gambling: 19, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 },
-  { name: 'Alaska', learners: 14, license: 16, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 },
-  { name: 'Arizona', learners: 16, license: 16, dropout: 18, marriage: 18, consent: 18, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 },
-  { name: 'Arkansas', learners: 14, license: 18, dropout: 17, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 },
-  { name: 'California', learners: 15, license: 18, dropout: 18, marriage: 18, consent: 18, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 },
-  { name: 'Colorado', learners: 15, license: 17, dropout: 17, marriage: 18, consent: 17, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 },
-  { name: 'Connecticut', learners: 16, license: 18, dropout: 18, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 },
-  { name: 'Delaware', learners: 16, license: 18, dropout: 16, marriage: 18, consent: 18, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 },
-  { name: 'District of Columbia', learners: 15, license: 18, dropout: 18, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 },
-  { name: 'Florida', learners: 15, license: 18, dropout: 16, marriage: 18, consent: 18, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 16 },
-  { name: 'Georgia', learners: 15, license: 18, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 17, drinkingAlcohol: 21, tattoo: 18 },
-  { name: 'Hawaii', learners: 15, license: 17, dropout: 18, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 },
-  { name: 'Idaho', learners: 14, license: 16, dropout: 16, marriage: 18, consent: 18, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 14 },
-  { name: 'Illinois', learners: 15, license: 18, dropout: 17, marriage: 18, consent: 17, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 },
-  { name: 'Indiana', learners: 15, license: 18, dropout: 18, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 },
-  { name: 'Iowa', learners: 14, license: 16, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 },
-  { name: 'Kansas', learners: 14, license: 18, dropout: 18, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 },
-  { name: 'Kentucky', learners: 16, license: 18, dropout: 18, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 },
-  { name: 'Louisiana', learners: 15, license: 17, dropout: 18, marriage: 18, consent: 17, gambling: 21, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 },
-  { name: 'Maine', learners: 15, license: 16, dropout: 17, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 },
-  { name: 'Maryland', learners: 15, license: 18, dropout: 18, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 },
-  { name: 'Massachusetts', learners: 16, license: 18, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 },
-  { name: 'Michigan', learners: 14, license: 18, dropout: 18, marriage: 18, consent: 16, gambling: 18, adultCharge: 17, drinkingAlcohol: 21, tattoo: 18 },
-  { name: 'Minnesota', learners: 15, license: 17, dropout: 17, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 },
-  { name: 'Mississippi', learners: 15, license: 16, dropout: 17, marriage: 21, consent: 16, gambling: 21, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 },
-  { name: 'Missouri', learners: 15, license: 18, dropout: 17, marriage: 18, consent: 17, gambling: 18, adultCharge: 17, drinkingAlcohol: 21, tattoo: 18 },
-  { name: 'Montana', learners: 14, license: 16, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 },
-  { name: 'Nebraska', learners: 15, license: 18, dropout: 18, marriage: 19, consent: 17, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 },
-  { name: 'Nevada', learners: 15, license: 18, dropout: 18, marriage: 18, consent: 16, gambling: 21, adultCharge: 21, drinkingAlcohol: 21, tattoo: 18 },
-  { name: 'New Hampshire', learners: 15, license: 16, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 },
-  { name: 'New Jersey', learners: 15, license: 16, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 16 },
-  { name: 'New Mexico', learners: 15, license: 18, dropout: 17, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 },
-  { name: 'New York', learners: 16, license: 18, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 16, drinkingAlcohol: 21, tattoo: 18 },
-  { name: 'North Carolina', learners: 16, license: 18, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 16, drinkingAlcohol: 21, tattoo: 18 },
-  { name: 'North Dakota', learners: 14, license: 21, dropout: 18, marriage: 18, consent: 16, gambling: 21, adultCharge: 21, drinkingAlcohol: 21, tattoo: 18 },
-  { name: 'Ohio', learners: 15, license: 16, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 },
-  { name: 'Oklahoma', learners: 15, license: 16, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 },
-  { name: 'Oregon', learners: 15, license: 18, dropout: 18, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 },
-  { name: 'Pennsylvania', learners: 15, license: 16, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 },
-  { name: 'Puerto Rico', learners: 15, license: 16, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 },
-  { name: 'Rhode Island', learners: 16, license: 18, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 },
-  { name: 'South Carolina', learners: 16, license: 16, dropout: 16, marriage: 18, consent: 16, gambling: 21, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 },
-  { name: 'South Dakota', learners: 14, license: 18, dropout: 16, marriage: 18, consent: 16, gambling: 21, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 },
-  { name: 'Tennessee', learners: 15, license: 18, dropout: 18, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 },
-  { name: 'Texas', learners: 15, license: 17, dropout: 18, marriage: 18, consent: 16, gambling: 18, adultCharge: 17, drinkingAlcohol: 21, tattoo: 18 },
-  { name: 'Utah', learners: 15, license: 18, dropout: 18, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 },
-  { name: 'Vermont', learners: 15, license: 16, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 },
-  { name: 'Virgin Islands', learners: 15, license: 18, dropout: 18, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 },
-  { name: 'Virginia', learners: 15, license: 18, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 },
-  { name: 'Washington', learners: 15, license: 18, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 },
-  { name: 'West Virginia', learners: 15, license: 16, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 },
-  { name: 'Wisconsin', learners: 15, license: 18, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 17, drinkingAlcohol: 21, tattoo: 18 },
-  { name: 'Wyoming', learners: 15, license: 18, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 },
-  { name: 'Yukon', learners: 15, license: 16, dropout: 16, marriage: 18, consent: 16, gambling: 19, adultCharge: 18, drinkingAlcohol: 19, tattoo: 18 },
-  { name: 'Northwest Territories', learners: 15, license: 16, dropout: 16, marriage: 18, consent: 16, gambling: 19, adultCharge: 18, drinkingAlcohol: 19, tattoo: 18 },
-  { name: 'Nunavut', learners: 15, license: 16, dropout: 16, marriage: 18, consent: 16, gambling: 19, adultCharge: 18, drinkingAlcohol: 19, tattoo: 18 },
-  { name: 'British Columbia', learners: 16, license: 18, dropout: 16, marriage: 18, consent: 16, gambling: 19, adultCharge: 18, drinkingAlcohol: 19, tattoo: 18 },
-  { name: 'Alberta', learners: 14, license: 16, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 18, tattoo: 18 },
-  { name: 'Saskatchewan', learners: 15, license: 16, dropout: 16, marriage: 18, consent: 16, gambling: 19, adultCharge: 18, drinkingAlcohol: 19, tattoo: 18 },
-  { name: 'Manitoba', learners: 15, license: 16, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 18, tattoo: 18 },
-  { name: 'Ontario', learners: 16, license: 18, dropout: 18, marriage: 18, consent: 16, gambling: 19, adultCharge: 18, drinkingAlcohol: 19, tattoo: 18 },
-  { name: 'Quebec', learners: 16, license: 18, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 18, tattoo: 18 },
-  { name: 'New Brunswick', learners: 16, license: 18, dropout: 16, marriage: 18, consent: 16, gambling: 19, adultCharge: 18, drinkingAlcohol: 19, tattoo: 18 },
-  { name: 'Nova Scotia', learners: 16, license: 18, dropout: 16, marriage: 18, consent: 16, gambling: 19, adultCharge: 18, drinkingAlcohol: 19, tattoo: 18 },
-  { name: 'Prince Edward Island', learners: 16, license: 18, dropout: 16, marriage: 18, consent: 16, gambling: 19, adultCharge: 18, drinkingAlcohol: 19, tattoo: 18 },
-  { name: 'Newfoundland and Labrador', learners: 16, license: 18, dropout: 16, marriage: 18, consent: 16, gambling: 19, adultCharge: 18, drinkingAlcohol: 19, tattoo: 18 },
-];
+const states = new Map([
+  ['Alabama', { learners: 15, license: 16, dropout: 17, marriage: 18, consent: 16, gambling: 19, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 }],
+  ['Alaska', { learners: 14, license: 16, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 }],
+  ['Arizona', { learners: 16, license: 16, dropout: 18, marriage: 18, consent: 18, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 }],
+  ['Arkansas', { learners: 14, license: 18, dropout: 17, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 }],
+  ['California', { learners: 15, license: 18, dropout: 18, marriage: 18, consent: 18, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 }],
+  ['Colorado', { learners: 15, license: 17, dropout: 17, marriage: 18, consent: 17, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 }],
+  ['Connecticut', { learners: 16, license: 18, dropout: 18, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 }],
+  ['Delaware', { learners: 16, license: 18, dropout: 16, marriage: 18, consent: 18, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 }],
+  ['District of Columbia', { learners: 15, license: 18, dropout: 18, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 }],
+  ['Florida', { learners: 15, license: 18, dropout: 16, marriage: 18, consent: 18, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 16 }],
+  ['Georgia', { learners: 15, license: 18, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 17, drinkingAlcohol: 21, tattoo: 18 }],
+  ['Hawaii', { learners: 15, license: 17, dropout: 18, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 }],
+  ['Idaho', { learners: 14, license: 16, dropout: 16, marriage: 18, consent: 18, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 14 }],
+  ['Illinois', { learners: 15, license: 18, dropout: 17, marriage: 18, consent: 17, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 }],
+  ['Indiana', { learners: 15, license: 18, dropout: 18, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 }],
+  ['Iowa', { learners: 14, license: 16, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 }],
+  ['Kansas', { learners: 14, license: 18, dropout: 18, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 }],
+  ['Kentucky', { learners: 16, license: 18, dropout: 18, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 }],
+  ['Louisiana', { learners: 15, license: 17, dropout: 18, marriage: 18, consent: 17, gambling: 21, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 }],
+  ['Maine', { learners: 15, license: 16, dropout: 17, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 }],
+  ['Maryland', { learners: 15, license: 18, dropout: 18, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 }],
+  ['Massachusetts', { learners: 16, license: 18, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 }],
+  ['Michigan', { learners: 14, license: 18, dropout: 18, marriage: 18, consent: 16, gambling: 18, adultCharge: 17, drinkingAlcohol: 21, tattoo: 18 }],
+  ['Minnesota', { learners: 15, license: 17, dropout: 17, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 }],
+  ['Mississippi', { learners: 15, license: 16, dropout: 17, marriage: 21, consent: 16, gambling: 21, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 }],
+  ['Missouri', { learners: 15, license: 18, dropout: 17, marriage: 18, consent: 17, gambling: 18, adultCharge: 17, drinkingAlcohol: 21, tattoo: 18 }],
+  ['Montana', { learners: 14, license: 16, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 }],
+  ['Nebraska', { learners: 15, license: 18, dropout: 18, marriage: 19, consent: 17, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 }],
+  ['Nevada', { learners: 15, license: 18, dropout: 18, marriage: 18, consent: 16, gambling: 21, adultCharge: 21, drinkingAlcohol: 21, tattoo: 18 }],
+  ['New Hampshire', { learners: 15, license: 16, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 }],
+  ['New Jersey', { learners: 15, license: 16, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 16 }],
+  ['New Mexico', { learners: 15, license: 18, dropout: 17, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 }],
+  ['New York', { learners: 16, license: 18, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 16, drinkingAlcohol: 21, tattoo: 18 }],
+  ['North Carolina', { learners: 16, license: 18, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 16, drinkingAlcohol: 21, tattoo: 18 }],
+  ['North Dakota', { learners: 14, license: 21, dropout: 18, marriage: 18, consent: 16, gambling: 21, adultCharge: 21, drinkingAlcohol: 21, tattoo: 18 }],
+  ['Ohio', { learners: 15, license: 16, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 }],
+  ['Oklahoma', { learners: 15, license: 16, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 }],
+  ['Oregon', { learners: 15, license: 18, dropout: 18, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 }],
+  ['Pennsylvania', { learners: 15, license: 16, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 }],
+  ['Puerto Rico', { learners: 15, license: 16, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 }],
+  ['Rhode Island', { learners: 16, license: 18, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 }],
+  ['South Carolina', { learners: 16, license: 16, dropout: 16, marriage: 18, consent: 16, gambling: 21, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 }],
+  ['South Dakota', { learners: 14, license: 18, dropout: 16, marriage: 18, consent: 16, gambling: 21, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 }],
+  ['Tennessee', { learners: 15, license: 18, dropout: 18, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 }],
+  ['Texas', { learners: 15, license: 17, dropout: 18, marriage: 18, consent: 16, gambling: 18, adultCharge: 17, drinkingAlcohol: 21, tattoo: 18 }],
+  ['Utah', { learners: 15, license: 18, dropout: 18, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 }],
+  ['Vermont', { learners: 15, license: 16, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 }],
+  ['Virgin Islands', { learners: 15, license: 18, dropout: 18, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 }],
+  ['Virginia', { learners: 15, license: 18, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 }],
+  ['Washington', { learners: 15, license: 18, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 }],
+  ['West Virginia', { learners: 15, license: 16, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 }],
+  ['Wisconsin', { learners: 15, license: 18, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 17, drinkingAlcohol: 21, tattoo: 18 }],
+  ['Wyoming', { learners: 15, license: 18, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 21, tattoo: 18 }],
+  ['Yukon', { learners: 15, license: 16, dropout: 16, marriage: 18, consent: 16, gambling: 19, adultCharge: 18, drinkingAlcohol: 19, tattoo: 18 }],
+  ['Northwest Territories', { learners: 15, license: 16, dropout: 16, marriage: 18, consent: 16, gambling: 19, adultCharge: 18, drinkingAlcohol: 19, tattoo: 18 }],
+  ['Nunavut', { learners: 15, license: 16, dropout: 16, marriage: 18, consent: 16, gambling: 19, adultCharge: 18, drinkingAlcohol: 19, tattoo: 18 }],
+  ['British Columbia', { learners: 16, license: 18, dropout: 16, marriage: 18, consent: 16, gambling: 19, adultCharge: 18, drinkingAlcohol: 19, tattoo: 18 }],
+  ['Alberta', { learners: 14, license: 16, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 18, tattoo: 18 }],
+  ['Saskatchewan', { learners: 15, license: 16, dropout: 16, marriage: 18, consent: 16, gambling: 19, adultCharge: 18, drinkingAlcohol: 19, tattoo: 18 }],
+  ['Manitoba', { learners: 15, license: 16, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 18, tattoo: 18 }],
+  ['Ontario', { learners: 16, license: 18, dropout: 18, marriage: 18, consent: 16, gambling: 19, adultCharge: 18, drinkingAlcohol: 19, tattoo: 18 }],
+  ['Quebec', { learners: 16, license: 18, dropout: 16, marriage: 18, consent: 16, gambling: 18, adultCharge: 18, drinkingAlcohol: 18, tattoo: 18 }],
+  ['New Brunswick', { learners: 16, license: 18, dropout: 16, marriage: 18, consent: 16, gambling: 19, adultCharge: 18, drinkingAlcohol: 19, tattoo: 18 }],
+  ['Nova Scotia', { learners: 16, license: 18, dropout: 16, marriage: 18, consent: 16, gambling: 19, adultCharge: 18, drinkingAlcohol: 19, tattoo: 18 }],
+  ['Prince Edward Island', { learners: 16, license: 18, dropout: 16, marriage: 18, consent: 16, gambling: 19, adultCharge: 18, drinkingAlcohol: 19, tattoo: 18 }],
+  ['Newfoundland and Labrador', { learners: 16, license: 18, dropout: 16, marriage: 18, consent: 16, gambling: 19, adultCharge: 18, drinkingAlcohol: 19, tattoo: 18 }],
+]);
 
 const stateAbbreviations = {
   'Alabama': 'AL', 'Alaska': 'AK', 'Arizona': 'AZ', 'Arkansas': 'AR', 'California': 'CA',
@@ -87,47 +87,37 @@ const stateAbbreviations = {
   'Nova Scotia': 'NS', 'Prince Edward Island': 'PE', 'Newfoundland and Labrador': 'NL'
 };
 
-const renderMap = (filteredStates, homeState, inputValue, filterKey) => {
-  const stateAbbrArray = `
-    AL AK AZ AR CA CO CT DE DC FL GA HI ID IL IN IA KS KY LA ME
-    MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI
-    SC SD TN TX UT VT VA WA WV WI WY YT NT NU BC AB SK MB ON QC NB
-    NS PE NL
-  `.split(/\s+/).filter(Boolean);
-
-  const grid = [];
-  for (let i = 0; i < 8; i++) {
-    const row = stateAbbrArray.slice(i * 9, (i + 1) * 9);
-    grid.push(row);
-  }
+const renderMap = (filteredStates, homeState, filterKey) => {
+  const stateAbbrArray = [
+    ['YT', 'NT', 'NU'],
+    ['BC', 'AB', 'SK', 'MB', 'ON', 'QC', 'NB', 'NS', 'PE', 'NL'],
+    ['WA', 'OR', 'ID', 'MT', 'ND', 'MN', 'WI', 'MI', 'NY', 'VT', 'NH', 'ME'],
+    ['CA', 'NV', 'UT', 'WY', 'SD', 'IA', 'IL', 'IN', 'OH', 'PA', 'NJ', 'CT', 'RI', 'MA'],
+    ['AK', 'HI', 'AZ', 'CO', 'NE', 'MO', 'KY', 'WV', 'VA', 'MD', 'DE'],
+    ['NM', 'KS', 'AR', 'TN', 'NC', 'SC'],
+    ['TX', 'OK', 'LA', 'MS', 'AL', 'GA'],
+    ['FL']
+  ];
 
   return (
     <div className="map-grid-container">
       <div className="map-grid">
-        {grid.map((row, rowIndex) => (
+        {stateAbbrArray.map((row, rowIndex) => (
           <div className="map-row" key={rowIndex}>
             {row.map(stateAbbr => {
               const stateName = Object.keys(stateAbbreviations).find(key => stateAbbreviations[key] === stateAbbr);
               const isHighlighted = filteredStates.has(stateName);
               const isHomeState = stateName === homeState;
-              const isBlackout = states.find(state => state.name === stateName && state[filterKey] === 999);
+              const isBlackout = states.get(stateName)?.[filterKey] === 999;
               let className = 'state';
 
-              if (isBlackout) {
-                className += ' blackout'; // Blackout state
-              } else if (isHomeState && isHighlighted) {
-                className += ' home-highlight'; // Both home and highlighted
-              } else if (isHomeState) {
-                className += ' home'; // Just home state
-              } else if (isHighlighted) {
-                className += ' highlight'; // Just highlighted
-              }
+              if (isBlackout) className += ' blackout';
+              else if (isHomeState && isHighlighted) className += ' home-highlight';
+              else if (isHomeState) className += ' home';
+              else if (isHighlighted) className += ' highlight';
 
               return (
-                <span
-                  key={stateAbbr}
-                  className={className}
-                >
+                <span key={stateAbbr} className={className}>
                   {stateAbbr}
                 </span>
               );
@@ -140,13 +130,13 @@ const renderMap = (filteredStates, homeState, inputValue, filterKey) => {
 };
 
 const CategoryMap = ({ title, filterKey, inputValue, homeState }) => {
-  const filteredStates = states.filter(state => state[filterKey] <= Number(inputValue));
+  const filteredStates = Array.from(states.entries()).filter(([name, data]) => data[filterKey] <= Number(inputValue));
   return (
     <>
       <div className="category-header">
         <h2>{title}</h2>
       </div>
-      {renderMap(new Set(filteredStates.map(state => state.name)), homeState, inputValue, filterKey)}
+      {renderMap(new Set(filteredStates.map(([name]) => name)), homeState, filterKey)}
     </>
   );
 };
@@ -172,14 +162,7 @@ const App = () => {
   const handleHomeStateChange = (event) => {
     const value = event.target.value;
     setHomeState(value);
-    if (value.length > 0) {
-      const suggestionList = Object.keys(stateAbbreviations).filter(state =>
-        state.toLowerCase().startsWith(value.toLowerCase())
-      );
-      setSuggestions(suggestionList);
-    } else {
-      setSuggestions([]);
-    }
+    setSuggestions(value.length > 0 ? Object.keys(stateAbbreviations).filter(state => state.toLowerCase().startsWith(value.toLowerCase())) : []);
   };
 
   const handleSuggestionClick = (suggestion) => {
@@ -246,125 +229,35 @@ const App = () => {
     <div className="app-container dark-mode">
       <div className="language-dropdown">
         <select value={language} onChange={handleLanguageChange}>
-          <option value="en">
-            <span role="img" aria-label="USA">🇺🇸🇨🇦</span> English
-          </option>
-          <option value="fr">
-            <span role="img" aria-label="Quebec">🇫🇷🇨🇦</span> Français
-          </option>
-          <option value="es">
-            <span role="img" aria-label="Mexico">🇪🇸🇲🇽</span> Español
-          </option>
+          <option value="en"><span role="img" aria-label="USA">🇺🇸🇨🇦</span> English</option>
+          <option value="fr"><span role="img" aria-label="Quebec">🇫🇷🇨🇦</span> Français</option>
+          <option value="es"><span role="img" aria-label="Mexico">🇪🇸🇲🇽</span> Español</option>
         </select>
       </div>
       <h1>{labels[language].title}</h1>
 
       <div className="input-group">
         <label htmlFor="age-input">{labels[language].ageInput}</label>
-        <input
-          id="age-input"
-          type="number"
-          onChange={handleChange}
-          className="age-input"
-          value={inputValue}
-          min="0"
-          max="99"
-        />
+        <input id="age-input" type="number" onChange={handleChange} className="age-input" value={inputValue} min="0" max="99" />
       </div>
       <div className="input-group autocomplete-container">
         <label htmlFor="home-state-input">{labels[language].homeStateInput}</label>
-        <input
-          id="home-state-input"
-          type="text"
-          onChange={handleHomeStateChange}
-          className="home-state-input"
-          value={homeState}
-        />
+        <input id="home-state-input" type="text" onChange={handleHomeStateChange} className="home-state-input" value={homeState} />
         {suggestions.length > 0 && (
           <ul className="autocomplete-list">
             {suggestions.map((suggestion) => (
-              <li
-                key={suggestion}
-                onClick={() => handleSuggestionClick(suggestion)}
-              >
+              <li key={suggestion} onClick={() => handleSuggestionClick(suggestion)}>
                 {suggestion}
               </li>
             ))}
           </ul>
         )}
       </div>
-      <div className="category-container">
-        <CategoryMap
-          title={labels[language].categories.learners}
-          filterKey="learners"
-          inputValue={inputValue}
-          homeState={homeState}
-        />
-      </div>
-      <div className="category-container">
-        <CategoryMap
-          title={labels[language].categories.license}
-          filterKey="license"
-          inputValue={inputValue}
-          homeState={homeState}
-        />
-      </div>
-      <div className="category-container">
-        <CategoryMap
-          title={labels[language].categories.dropout}
-          filterKey="dropout"
-          inputValue={inputValue}
-          homeState={homeState}
-        />
-      </div>
-      <div className="category-container">
-        <CategoryMap
-          title={labels[language].categories.marriage}
-          filterKey="marriage"
-          inputValue={inputValue}
-          homeState={homeState}
-        />
-      </div>
-      <div className="category-container">
-        <CategoryMap
-          title={labels[language].categories.consent}
-          filterKey="consent"
-          inputValue={inputValue}
-          homeState={homeState}
-        />
-      </div>
-      <div className="category-container">
-        <CategoryMap
-          title={labels[language].categories.gambling}
-          filterKey="gambling"
-          inputValue={inputValue}
-          homeState={homeState}
-        />
-      </div>
-      <div className="category-container">
-        <CategoryMap
-          title={labels[language].categories.drinkingAlcohol}
-          filterKey="drinkingAlcohol"
-          inputValue={inputValue}
-          homeState={homeState}
-        />
-      </div>
-      <div className="category-container">
-        <CategoryMap
-          title={labels[language].categories.tattoo}
-          filterKey="tattoo"
-          inputValue={inputValue}
-          homeState={homeState}
-        />
-      </div>
-      <div className="category-container">
-        <CategoryMap
-          title={labels[language].categories.adultCharge}
-          filterKey="adultCharge"
-          inputValue={inputValue}
-          homeState={homeState}
-        />
-      </div>
+      {Object.keys(labels[language].categories).map((key) => (
+        <div className="category-container" key={key}>
+          <CategoryMap title={labels[language].categories[key]} filterKey={key} inputValue={inputValue} homeState={homeState} />
+        </div>
+      ))}
     </div>
   );
 };
