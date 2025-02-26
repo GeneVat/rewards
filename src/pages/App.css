@@ -1,0 +1,127 @@
+@import "tailwindcss";
+.state {
+  @apply [transition:background-color_0.3s,_color_0.3s];
+}
+.state.home {
+  @apply bg-[#3c3c3c];
+
+  /* Keep the default darker blue */
+}
+.state.highlight {
+  @apply bg-[#f1c40f] text-[#2c3e50] font-bold;
+}
+.state.home-highlight {
+  @apply bg-[#87CEEB] text-[#2c3e50] font-bold;
+
+  /* Sky blue for home state when highlighted */
+}
+.highlight {
+  @apply bg-[#f1c40f] text-[#2c3e50] font-bold;
+}
+.autocomplete-container {
+  @apply relative w-full;
+}
+.autocomplete-list {
+  @apply absolute w-full bg-[#2c2c2c] border shadow-[0_2px_5px_rgba(0,0,0,0.3)] z-10 m-0 p-0 rounded-[5px] border-solid border-[#444] left-0 top-full;
+  list-style: none;
+}
+.autocomplete-list li {
+  @apply cursor-pointer transition-[background-color] duration-[0.3s] text-left text-[#e0e0e0] p-2.5 hover:bg-[#3c3c3c];
+}
+.category-container {
+  @apply bg-[#1e1e1e] shadow-[0_2px_5px_rgba(0,0,0,0.3)] transition-shadow duration-[0.3s] w-full box-border mb-[30px] p-5 rounded-[10px] hover:shadow-[0_4px_10px_rgba(0,0,0,0.5)];
+
+  /* Scale to the width of the display */
+}
+.map-grid {
+  @apply text-sm leading-[1.4] bg-[#2c2c2c] grid gap-2.5 text-center shadow-[0_3px_6px_rgba(0,0,0,0.3)] w-full box-border grid-cols-[repeat(auto-fit,minmax(35px,1fr))] grid-rows-[repeat(auto-fit,minmax(35px,1fr))] p-5 rounded-[10px];
+
+  /* Use CSS Grid */
+
+  /* Add gap between grid items */
+
+  /* Scale to the width of the display */
+
+  /* Scale columns */
+
+  /* Scale rows */
+}
+.map-row {
+  @apply contents;
+
+  /* Use contents to allow grid items to span rows */
+}
+
+/* Media query for smaller screens */
+@media (max-width: 600px) {
+  .app-container {
+    @apply p-[15px];
+  }
+  h1 {
+    @apply text-[2em];
+  }
+  .date-input,
+  .age-input,
+  .toggle-button {
+    @apply text-lg p-2.5;
+  }
+  .toggle-button {
+    @apply w-full;
+  }
+  .category-header h2 {
+    @apply text-[1.5em];
+  }
+  .input-group {
+    @apply mb-[15px];
+  }
+  .age-input,
+  .home-state-input {
+    @apply text-base p-2;
+  }
+  .autocomplete-list li {
+    @apply p-2;
+  }
+  .state {
+    @apply w-[35px] h-[35px] leading-[35px] text-sm;
+
+    /* Ensure cell width is 35px */
+
+    /* Ensure cell height is 35px */
+
+    /* Center the text vertically */
+
+    /* Adjust text size to fit within 35px cells */
+  }
+  .map-grid {
+    @apply grid-cols-[repeat(auto-fit,minmax(35px,1fr))] grid-rows-[repeat(auto-fit,minmax(35px,1fr))] p-2.5;
+
+    /* Adjust columns for smaller screens */
+
+    /* Adjust rows for smaller screens */
+  }
+}
+@media (min-width: 601px) and (max-width: 1200px) {
+  .map-grid {
+    @apply grid-cols-[repeat(auto-fit,minmax(35px,1fr))] grid-rows-[repeat(auto-fit,minmax(35px,1fr))];
+
+    /* Adjust columns for medium screens */
+
+    /* Adjust rows for medium screens */
+  }
+}
+@media (min-width: 1201px) {
+  .map-grid {
+    @apply grid-cols-[repeat(auto-fit,minmax(35px,1fr))] grid-rows-[repeat(auto-fit,minmax(35px,1fr))];
+
+    /* Adjust columns for larger screens */
+
+    /* Adjust rows for larger screens */
+  }
+}
+
+/* Add CSS Grid for larger screens */
+@media (min-width: 768px) {
+  .app-container {
+    @apply flex flex-col items-center;
+  }
+}
