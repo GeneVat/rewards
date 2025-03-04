@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../App.css';
 import { states, stateAbbreviations, stateAbbrArray } from './MapData-Eu.js'
 import { labels } from '../LanguageData.js'
-import LanguageDropdown from '../components/LanguageDropdown.jsx';
+import LanguageDropdown from '../components/LanguageDropdown.jsx'; 
 
 const renderMap = (filteredStates, homeState, filterKey) => {
   return (
@@ -52,9 +52,10 @@ export function Eu() {
   const [homeState, setHomeState] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   const [language, setLanguage] = useState('en');
+
   const handleChange = (event) => {
     const value = event.target.value;
-    if (value === '' || (Number(value) >= 10 && Number(value) <= 99)) {
+    if (value === '' || (Number(value) >= 0 && Number(value) <= 99)) {
       setInputValue(value);
     }
   };

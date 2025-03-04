@@ -33,7 +33,7 @@ const LanguageDropdown = ({ language, handleLanguageChange }) => {
         <option value="ga">🇮🇪 Gaeilge</option>
       </select>
     </div>
-          <a className="content-center inline-block m-2 bg-green-700 text-white no-underline text-lg rounded-lg text-center cursor-pointer px-7 py-2" href='https://genevat.github.io/rewards2/'>Home</a>
+          <a className="content-center inline-block m-2 bg-green-700 text-white no-underline text-lg rounded-lg text-center cursor-pointer px-7 py-2" href='https://genevat.github.io/rewards/'>Home</a>
           
 </>
   );
