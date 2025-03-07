@@ -115,7 +115,6 @@ export function Map() {
       </div>
 
       <div className="input-group autocomplete-container mb-4 w-full sm:w-auto">
-        <label htmlFor="home-state-input" className="block text-sm sm:text-base mb-2">{labels[language].homeStateInput}</label>
         {suggestions.length > 0 && (
           <ul className="autocomplete-list bg-white border border-gray-300 rounded-lg max-h-40 overflow-y-auto w-full sm:w-60 mt-2">
             {suggestions.map((suggestion) => (
