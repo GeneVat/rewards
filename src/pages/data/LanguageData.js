@@ -3,7 +3,13 @@ export const labels = {
     "title": "Unlocked Countries",
     "ageInput": "Enter your age",
     "homeStateInput": "Enter your country",
-    "homeButton": "Home",  // Added homeButton key
+    "homeButton": "Home",
+    "pick": "Pick the Version",
+    "location": {
+      "usca": "United States & Canada",
+      "latin": "Latin America",
+      "euro": "Europe",
+    },
     "categories": {
       "supervised": "Supervised Driving",
       "license": "Driving License",
@@ -18,7 +24,13 @@ export const labels = {
     "title": "Pays Déverrouillés",
     "ageInput": "Entrez votre âge",
     "homeStateInput": "Entrez votre pays",
-    "homeButton": "Accueil",  // Added homeButton key
+    "homeButton": "Accueil",
+    "pick": "Choisissez la version",
+    "location": {
+      "usca": "États-Unis et Canada",
+      "latin": "Amérique Latine",
+      "euro": "Europe",
+    },
     "categories": {
       "supervised": "Conduite Supervisée",
       "license": "Permis de Conduire",
@@ -33,7 +45,13 @@ export const labels = {
     "title": "Freigeschaltete Länder",
     "ageInput": "Gib dein Alter ein",
     "homeStateInput": "Gib dein Land ein",
-    "homeButton": "Startseite",  // Added homeButton key
+    "homeButton": "Startseite",
+    "pick": "Wähle die Version",
+    "location": {
+      "usca": "Vereinigte Staaten & Kanada",
+      "latin": "Lateinamerika",
+      "euro": "Europa",
+    },
     "categories": {
       "supervised": "Begleitetes Fahren",
       "license": "Führerschein",
@@ -48,7 +66,13 @@ export const labels = {
     "title": "Países Desbloqueados",
     "ageInput": "Ingresa tu edad",
     "homeStateInput": "Ingresa tu país",
-    "homeButton": "Inicio",  // Added homeButton key
+    "homeButton": "Inicio",
+    "pick": "Elige la versión",
+    "location": {
+      "usca": "Estados Unidos y Canadá",
+      "latin": "América Latina",
+      "euro": "Europa",
+    },
     "categories": {
       "supervised": "Conducción Supervisada",
       "license": "Licencia de Conducir",
@@ -63,7 +87,13 @@ export const labels = {
     "title": "Pазблокированные нации",
     "ageInput": "Введите ваш возраст",
     "homeStateInput": "Введите вашу страну",
-    "homeButton": "Главная",  // Added homeButton key
+    "homeButton": "Главная",
+    "pick": "Выберите версию",
+    "location": {
+      "usca": "Соединенные Штаты и Канада",
+      "latin": "Латинская Америка",
+      "euro": "Европа",
+    },
     "categories": {
       "supervised": "Контролируемое Вождение",
       "license": "Водительское Удостоверение",
@@ -78,7 +108,13 @@ export const labels = {
     "title": "Odblokowane Kraje",
     "ageInput": "Wpisz swój wiek",
     "homeStateInput": "Wpisz swój kraj",
-    "homeButton": "Strona Główna",  // Added homeButton key
+    "homeButton": "Strona Główna",
+    "pick": "Wybierz wersję",
+    "location": {
+      "usca": "Stany Zjednoczone i Kanada",
+      "latin": "Ameryka Łacińska",
+      "euro": "Europa",
+    },
     "categories": {
       "supervised": "Nadzorowana Jazda",
       "license": "Prawo Jazdy",
@@ -93,7 +129,13 @@ export const labels = {
     "title": "Розблоковані Країни",
     "ageInput": "Введіть свій вік",
     "homeStateInput": "Введіть свою країну",
-    "homeButton": "Головна",  // Added homeButton key
+    "homeButton": "Головна",
+    "pick": "Виберіть версію",
+    "location": {
+      "usca": "Сполучені Штати та Канада",
+      "latin": "Латинська Америка",
+      "euro": "Європа",
+    },
     "categories": {
       "supervised": "Керування під наглядом",
       "license": "Водійське Посвідчення",
@@ -108,7 +150,13 @@ export const labels = {
     "title": "Țări Deblocate",
     "ageInput": "Introduceți vârsta dvs.",
     "homeStateInput": "Introduceți țara dvs.",
-    "homeButton": "Acasă",  // Added homeButton key
+    "homeButton": "Acasă",
+    "pick": "Alegeți versiunea",
+    "location": {
+      "usca": "Statele Unite și Canada",
+      "latin": "America Latină",
+      "euro": "Europa",
+    },
     "categories": {
       "supervised": "Conducere Supravegheată",
       "license": "Permis de Conducere",
@@ -123,7 +171,13 @@ export const labels = {
     "title": "Paesi Sbloccati",
     "ageInput": "Inserisci la tua età",
     "homeStateInput": "Inserisci il tuo paese",
-    "homeButton": "Home",  // Added homeButton key
+    "homeButton": "Home",
+    "pick": "Scegli la versione",
+    "location": {
+      "usca": "Stati Uniti e Canada",
+      "latin": "America Latina",
+      "euro": "Europa",
+    },
     "categories": {
       "supervised": "Guida Supervisata",
       "license": "Patente di Guida",
@@ -138,7 +192,13 @@ export const labels = {
     "title": "Tíortha Díbhlocáilte",
     "ageInput": "Cuir isteach d’aois",
     "homeStateInput": "Cuir isteach do thír",
-    "homeButton": "Baile",  // Added homeButton key
+    "homeButton": "Baile",
+    "pick": "Roghnaigh an leagan",
+    "location": {
+      "usca": "Stáit Aontaithe agus Ceanada",
+      "latin": "An Mheiriceá Laidinn",
+      "euro": "An Eoraip",
+    },
     "categories": {
       "supervised": "Tiomáint Faoi Mhaoirseacht",
       "license": "Ceadúnas Tiomána",
